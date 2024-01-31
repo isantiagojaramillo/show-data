@@ -5,10 +5,13 @@ function App() {
   const [books, setBooks] = useState([]);
   
   useEffect( () => {
-    fetch('http://localhost:5000/getBooks')
+    fetch('http://localhost:3000/getBooks')
     .then(response => response.json())
-    .then(data => setBooks(data))
-    .catch(error => console.log('Error bringing the books ' + error));
+    .then(data => {
+      console.log(data);
+      setBooks(data)
+    }) 
+    .catch(error => console.log('Error bringing the books ', error));
 
   }, []);
 
@@ -19,7 +22,7 @@ function App() {
 
         <ul>
           {books.map(book => (
-            <li>
+            <li key={book.id}>
               {book.id} - {book.title} - {book.author} - {book.description}
             </li>
           ))}
