@@ -17,16 +17,28 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>Books</h1>
-
-        <ul>
+      <div className='container justify-content-center'>
+        <h1 className='text-center'>Books</h1>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
           {books.map(book => (
-            <li key={book.id}>
-              {book.id} - {book.title} - {book.author} - {book.description}
-            </li>
+            <tbody>
+              <tr>
+                <td key={book.id}>{book.id}</td>
+                <td>{book.title}</td>
+                <td>{book.author}</td>
+                <td>{book.description}</td>
+              </tr>
+            </tbody>
           ))}
-        </ul>
+        </table>
       </div>
     </>
   )
